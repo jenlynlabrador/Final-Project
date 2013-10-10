@@ -1,22 +1,15 @@
 <!doctype html>
 <html>
     <head>
-        <title>Project Title</title>
+        <title>e-Thesis Library</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     <body>
+
     <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=520243734709082";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-            
-		<div id="fb-root"></div>
-		<div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,18 +34,18 @@
                             </ul>
                         </li>
                     </ul>
-                    <a href='#' class="btn btn-primary btn-login navbar-btn navbar-right">Log in</a>
+                    <a href='#' class="btn btn-warning btn-login navbar-btn navbar-right">Log in</a>
                     </div>
                 </div>
             </div>
             <div class='container'>
                 <div class='row app-content'>
-				</div>
+                </div>
             </div>
         </div>
 
+        
         <!-- scripts -->
-        <!-- =================== -->
         <script src="js/jquery.js"></script>
         <script src="js/underscore.js"></script>
         <script src="js/backbone.js"></script>
@@ -62,9 +55,8 @@
 
 
         <!-- templates -->
-        <!-- =================== -->
         <script id="tpl-thesis-list" type="text/x-handlebars-template">
-            <div class='col-md-7'>
+            <div id = "viewAll"class='col-md-12'>
                 <table class='table table-hover'>
                     <thead>
                         <tr>
@@ -83,13 +75,24 @@
             <tr data-id="{{Id}}">
                 <td>{{Year}}</td>
                 <td>{{Title}}</td>
-                <td><a href='#'>Edit</a></td>
+                <td><a href='#'>Show</a></td>
             </tr>
         </script>
 
+        <script id="tpl-thesis-show-item" type="text/x-handlebars-template">
+            <div id = "left">
+                <h2 id="ttitle">{{Title}}</h2>
+                <h3 id="tsubtitle">{{Subtitle}}</h3><br>
+                <p id="tdescription"> ({{Year}}) <br><br> <b>Abstract:</b> {{Description}}</p>
+            </div>
+
+            <div id = "right" class="fb-comments" data-href="http://geverolabrador.appspot.com/thesis-{{Id}}" data-colorscheme="light" data-numposts="3" data-width="700">
+            </div>
+            
+        </script>
 
         <script id="tpl-thesis-form" type="text/x-handlebars-template">
-            <div class='col-md-7 thesis-form'>
+            <div id= "newform" class='col-md-12 thesis-form'>
                 <form role="form">
                     <div class="form-group">
                         <label for="year-input">Year</label>
@@ -103,7 +106,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tite-input">Title</label>
-                        <input id='title-input' type="text" class="form-control" name='Title' placeholder="ex. AC Dual Charging Station" value='{{Title}}'>
+                        <input id='title-input' type="text" class="form-control" name='Title' placeholder="ex. The Potential Benefits of Plant Chemicals as Antiviral Drugs..." value='{{Title}}'>
                     </div>
                     <div class="form-group">
                         <label for="subtite-input">Subtitle</label>
@@ -111,23 +114,18 @@
                     </div>
                     <div class="form-group">
                         <label for="description-input">Description</label>
-                        <textarea id='description-input' name='Description' placeholder="Thesis is all about..."class="form-control" rows="3">{{Description}}</textarea>
+                        <textarea id='description-input' name='Description' placeholder="This study is all about..." class="form-control" rows="3">{{Description}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                     {{#if Id}}
-                    <button class="btn btn-default">Delete</button>
-                    {{/if}}
+                   // <button class="btn btn-default">Delete</button>
+                    // {{/if}} 
                 </form>
             </div>
         </script>
-					
-		<script id="tpl-thesis-view-item" type="text/x-handlebars-template">
-			<h1>{{Title}} ({{Year}})</h1>
-			<h3>{{Subtitle}}</h3><br>
-			<p>{{Description}}</p>
-			
-			<div class="fb-comments" data-href="http://example.com/comments" data-colorscheme="light" data-numposts="3" data-width="350"></div>
-        </script>
+
+        
+
     </body>
 </html>
 
