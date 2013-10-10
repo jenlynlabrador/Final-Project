@@ -141,7 +141,7 @@ $(function() {
                     alert("Thesis duplicate error.");
                 }else{
                     $.post('/api/thesis', thesisObject);
-                    alert("Thesis \"" + thesisObject.Title + "\", saved.");
+                    alert("Thesis Successfully Added!");
                 }
             }else{
                 alert("WARNING! Title and Description Required.");
