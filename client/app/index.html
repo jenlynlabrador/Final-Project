@@ -83,12 +83,13 @@
             <div id = "left">
                 <h2 id="ttitle">{{Title}}</h2>
                 <h3 id="tsubtitle">{{Subtitle}}</h3><br>
-                <p id="tdescription"> ({{Year}}) <br><br> <b>Abstract:</b> {{Description}}</p>
+                <p id="tdescription"> ({{Year}}) <br> <br> <b>Author/s:</b> {{Authors}}<br><br> <b>Abstract:</b> {{Description}}</p>
+
             </div>
 
-            <div id = "right" class="fb-comments" data-href="http://geverolabrador.appspot.com/thesis-{{Id}}" data-colorscheme="light" data-numposts="3" data-width="700">
+            <div id = "right" class="fb-comments" data-href="http://geverolabrador.appspot.com/thesis-{{Id}}" data-colorscheme="light" data-numposts="3" data-width="500">
             </div>
-            
+
         </script>
 
         <script id="tpl-thesis-form" type="text/x-handlebars-template">
@@ -109,12 +110,18 @@
                         <input id='title-input' type="text" class="form-control" name='Title' placeholder="ex. The Potential Benefits of Plant Chemicals as Antiviral Drugs..." value='{{Title}}'>
                     </div>
                     <div class="form-group">
-                        <label for="subtite-input">Subtitle</label>
+                        <label for="subtitle-input">Subtitle</label>
                         <input id='subtitle-input' type="text" class="form-control" name='Subtitle' placeholder="Enter subtitle.." value='{{Subtitle}}'>
                     </div>
+
+                    <div class="form-group">
+                        <label for="authors-input">Authors</label>
+                        <input id='authors-input' type="text" class="form-control" name='Authors' placeholder="Names of the Authors & Co-Authors" value='{{Authors}}'>
+                    </div>
+
                     <div class="form-group">
                         <label for="description-input">Description</label>
-                        <textarea id='description-input' name='Description' placeholder="This study is all about..." class="form-control" rows="3">{{Description}}</textarea>
+                        <textarea id='description-input' name='Description' placeholder="This study is all about..." class="form-control" rows="5">{{Description}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                     {{#if Id}}

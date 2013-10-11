@@ -32,6 +32,11 @@ body {
 	text-align: justify;
 }
 
+#tauthors {
+	padding-left: 200px;
+	padding-right: 200px;
+	margin-bottom: 50px;
+}
 #tdescription {
 	padding-left: 200px;
 	padding-right: 200px;
