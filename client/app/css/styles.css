@@ -1,5 +1,5 @@
 body {
-    padding-top: 100px;
+    padding-top: 70px;
 }
 
 .hidden {
@@ -58,6 +58,7 @@ h3 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 300;
 	line-height: 1.5;
+	li
 	font-style: italic;
 	font-style: italic;
 	font-size: 20px;
