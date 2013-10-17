@@ -40,11 +40,8 @@ $(function() {
             $('.navbar-brand').click(function() {
                 self.router.navigate('', {trigger: true});
             });
-            $('.form-search').submit(function() {
-                self.showList();
-                self.search($('.search-input').val(), function(list) {
-                    self.displayLoadedList(list);
-                });
+            $('.form-search').unbind('submit').submit(function(ev) {
+                self.router.navigate('search?=' + $('.search-input').val(), {trigger: true});
                 return false;
             });
         },
@@ -163,7 +160,9 @@ $(function() {
                 type: 'DELETE',
                 url: '/api/thesis/' + id,
                 success: function() {
+                    alert("DELETE??")
                     self.router.navigate('list', {trigger: true});
+
                 }
             });
         },
@@ -258,7 +257,7 @@ $(function() {
             'thesis-:id': 'onView',
             'new': 'onCreate',
             'edit-:id': 'onEdit',
-            'search-:query': 'onSearch',
+            'search?=:query': 'onSearch',
             'list': 'onList',
             'delete-:id': 'onDelete'
         },
@@ -285,10 +284,7 @@ $(function() {
             });
        },
        onSearch: function(query) {
-            app.showList();
-            app.search(query, function(list) {
-                app.displayLoadedList(list);
-            });
+            app.searchThesis(query);
        },
 
        onList: function() {
