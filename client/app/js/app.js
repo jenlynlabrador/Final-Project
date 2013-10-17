@@ -117,7 +117,15 @@ $(function() {
                 }
                 self.save(thesisObject);
                 return false;
+
             });
+
+            $('.btn-cancel').click(function() {
+                self.router.navigate('list', {trigger: true});
+                return false;
+            });
+
+            self.setEventListeners();
 
         },
         loadAllThesis: function() {
@@ -178,17 +186,19 @@ $(function() {
             } 
 
             if (thesisObj.Title.length != 0){
+                $.get('/api/thesis', function(list){
+
                 var sameThesis = false;
                 
-                for (var i = 0; i < object.length; i++){
-                    if (thesisObj.Title == object[i].Title){
+                for (var i = 0; i < list.length; i++){
+                    if (thesisObj.Title == list[i].Title){
                         sameThesis = true;
                         break;
                     }
                 }
 
                     if (sameThesis){
-                            alert("Error:Thesis Duplication.");
+                            alert("Error: Thesis Duplication.");
                         }else{
                             $.post('/api/thesis', thesisObj, function(res) {
                 self.router.navigate('list', {trigger: true});
@@ -197,8 +207,10 @@ $(function() {
                             alert("Thesis Successfully Added!");  
                             return false;
                         }
-                    }else{
-                        alert("WARNING! Title and Description Required.");
+
+                });
+              }else{
+               alert("Required Fields: Title & Description");
 
         }
 
@@ -212,7 +224,7 @@ $(function() {
                     return regex.test(thesis.Title);
                });
                if(sorted_list.length == 0){
-                    alert('The thesis you are looking for is not existing in our database');
+                    alert('No result/s found.');
                }
                else{
                     var $listTemplate = getTemplate('tpl-thesis-list');
